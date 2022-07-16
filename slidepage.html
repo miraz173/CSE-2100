@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-control" content="public">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+  <link href="./css/slidepage.css" rel="stylesheet">
+  <title>Slide Show</title>
+</head>
+
+<body>
+  <!-- Tab links -->
+  <div class="tab">
+<!--      <span class="dot"></span>-->
+      <button id='defaultClicked' class="on" onclick="openTab(event, 'Time')">Time</button>
+      <button onclick="openTab(event, 'Weather')">Weather</button>
+      <button onclick="openTab(event, 'Routine')">Routine</button>
+      <button onclick="openTab(event, 'Sophomore')">Sophomore</button>
+      <button onclick="openTab(event, 'Junior')">Junior</button>
+      <button onclick="openTab(event, 'Senior')">Senior</button>
+      <button onclick="location.href='./homepage.html'" type="button">homepage</button>
+      <button onclick="location.href='./adminpage.html'" type="button">admin</button>
+  </div>
+  <hr>
+  <main id="main">
+      <!-- Tab content -->
+      <div id="Time" class="tabcontent">
+          <div class="clock">
+              <div class="outer-clock-face">
+                  <div class="marking marking-one"></div>
+                  <div class="marking marking-two"></div>
+                  <div class="marking marking-three"></div>
+                  <div class="marking marking-four"></div>
+                  <div class="inner-clock-face">
+                      <div class="hand hour-hand"></div>
+                      <div class="hand min-hand"></div>
+                      <div class="hand second-hand"></div>
+                  </div>
+              </div>
+          </div>
+
+          <div id="timeDigital">
+              <div id="hour" style="--clr: #1df52f;">4</div>
+              <div id="min" style="--clr: #f51d94;">20</div>
+              <div id="sec" style="--clr: #ee791a;">00</div>
+              <div id="ampm">AM</div>
+          </div>
+
+          <div id="date">
+              <div class="english">
+                  <div id="day">Friday</div>
+                  <div id="calender">26 March, 1971</div>
+              </div>
+              <div class="bangla">
+                  <div id="onlyday">shukrobar</div>
+                  <div id="bongabdo">???</div>
+              </div>
+          </div>
+
+      </div>
+
+      <div id="Weather" class="tabcontent">
+
+          <!--7 days forecast-->
+          <div>
+              <script>
+                  (function(d, s, id) {
+                      if (d.getElementById(id)) {
+                          if (window.__TOMORROW__) {
+                              window.__TOMORROW__.renderWidget();
+                          }
+                          return;
+                      }
+                      const fjs = d.getElementsByTagName(s)[0];
+                      const js = d.createElement(s);
+                      js.id = id;
+                      js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+                      fjs.parentNode.insertBefore(js, fjs);
+                  })(document, 'script', 'tomorrow-sdk');
+              </script>
+
+              <div class="tomorrow"
+                   data-location-id="008574"
+                   data-language="EN"
+                   data-unit-system="METRIC"
+                   data-skin="light"
+                   data-widget-type="upcoming"
+                   style="padding-bottom:22px;position:relative;"
+              >
+                  <a
+                          href="https://www.tomorrow.io/weather/"
+                          rel="nofollow noopener noreferrer"
+                          target="_blank"
+                          style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
+                  >
+                  </a>
+              </div>
+          </div>
+
+          <!-- air particle index -->
+          <div>
+              <script>
+                  (function(d, s, id) {
+                      if (d.getElementById(id)) {
+                          if (window.__TOMORROW__) {
+                              window.__TOMORROW__.renderWidget();
+                          }
+                          return;
+                      }
+                      const fjs = d.getElementsByTagName(s)[0];
+                      const js = d.createElement(s);
+                      js.id = id;
+                      js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+                      fjs.parentNode.insertBefore(js, fjs);
+                  })(document, 'script', 'tomorrow-sdk');
+              </script>
+
+              <div class="tomorrow"
+                   data-location-id="008574"
+                   data-language="EN"
+                   data-unit-system="METRIC"
+                   data-skin="light"
+                   data-widget-type="aqiPollutant"
+                   style="padding-bottom:22px;position:relative;"
+              >
+
+              </div>
+          </div>
+
+          <!-- weed pollen index -->
+          <!-- <div>
+              <script>
+          (function(d, s, id) {
+              if (d.getElementById(id)) {
+                  if (window.__TOMORROW__) {
+                      window.__TOMORROW__.renderWidget();
+                  }
+                  return;
+              }
+              const fjs = d.getElementsByTagName(s)[0];
+              const js = d.createElement(s);
+              js.id = id;
+              js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+              fjs.parentNode.insertBefore(js, fjs);
+          })(document, 'script', 'tomorrow-sdk');
+              </script>
+
+              <div class="tomorrow"
+                  data-location-id="008574"
+                  data-language="EN"
+                  data-unit-system="METRIC"
+                  data-skin="light"
+                  data-widget-type="aqiPollen"
+                  style="padding-bottom:22px;position:relative;"
+              >
+                  <a
+                  href="https://www.tomorrow.io/weather/"
+                  rel="nofollow noopener noreferrer"
+                  target="_blank"
+                  style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
+                  >
+                  </a>
+              </div>
+          </div> -->
+
+          <!-- 7 Division Weather -->
+          <div>
+              <script>
+                  (function(d, s, id) {
+                      if (d.getElementById(id)) {
+                          if (window.__TOMORROW__) {
+                              window.__TOMORROW__.renderWidget();
+                          }
+                          return;
+                      }
+                      const fjs = d.getElementsByTagName(s)[0];
+                      const js = d.createElement(s);
+                      js.id = id;
+                      js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+                      fjs.parentNode.insertBefore(js, fjs);
+                  })(document, 'script', 'tomorrow-sdk');
+              </script>
+
+              <div class="tomorrow"
+                   data-location-id="008574,008486,008596,008460,008481,008514"
+                   data-language="EN"
+                   data-unit-system="METRIC"
+                   data-skin="light"
+                   data-widget-type="aqi6"
+                   style="padding-bottom:22px;position:relative;"
+              >
+                  <a
+                          href="https://www.tomorrow.io/weather/"
+                          rel="nofollow noopener noreferrer"
+                          target="_blank"
+                          style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
+                  >
+                  </a>
+              </div>
+          </div>
+          <p>Alternate text</p>
+      </div>
+
+      <div id="Routine" class="tabcontent">
+          <!-- easyData - Creating table -->
+          <div class="container" display="block">
+              <!-- Table -->
+              <table class="table">
+                  <thead id="table-head"></thead>
+                  <tbody id="table-body"></tbody>
+              </table>
+              <!-- Table -->
+          </div>
+      </div>
+
+      <div id="Sophomore" class="tabcontent">
+          <h3>Sophomore</h3>
+          <p>Tokyo is the capital of Japan.</p>
+      </div>
+
+      <div id="Junior" class="tabcontent">
+          <h3>Junior</h3>
+          <p>Tokyo is the capital of Japan.</p>
+      </div>
+
+      <div id="Senior" class="tabcontent">
+          <h3>Senior</h3>
+          <p>os the capital of Japan.</p>
+      </div>
+  </main>
+
+  <script src="./js/slidepage.js"></script>
+  <!-- Google API -->
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://apis.google.com/js/api.js" onload="window.$ = window.jQuery = module.exports;"></script>
+  <!-- easyData -->
+  <script type="text/javascript" src="./js/easyData-google-sheets.js"></script>
+</body>
+
+</html>
