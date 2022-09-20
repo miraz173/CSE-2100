@@ -22,8 +22,10 @@ function connectionStatus() {
 function showRoutine() {
   // Google Sheets
 
-  const GS_SCOPE = "https://www.googleapis.com/auth/spreadsheets.readonly";
+  // const GS_SCOPE = "https://www.googleapis.com/auth/spreadsheets.readonly";
+  const GS_SCOPE = "./js/googleSheetAPI.json";
   const GS_API_URL = "https://sheets.googleapis.com/$discovery/rest?version=v4";
+  // const GS_API_URL = "./js/rest.json";//offline version of previous link; doesn't work
 
   function initOAuthClient(credentials = null) {
 
@@ -93,11 +95,12 @@ function showRoutine() {
   }
 
   let tr=[];
-  <!-- easyData - Creating table -->
+  // easyData - Creating table
   {
-    {
+    {console.log("table loading...");
       // Your API KEY
       const API_KEY = "AIzaSyC1cRemc4QTWBxrODtbqzChoPkzvsAlS-4";
+      console.log("api connected");
 
       function displayResult2(response) {
         let tableHead = "";
@@ -128,13 +131,14 @@ function showRoutine() {
                 }
               });
               tableBody += "</tr>"; tr.push(td);
+              console.log(td);
             }
 
           }
         });
 
         document.getElementById("table-head").innerHTML = tableHead;
-        document.getElementById("table-body").innerHTML = tableBody; //console.log(tr);
+        document.getElementById("table-body").innerHTML = tableBody; console.log("table loaded");
       }
 
       function loadData() {

@@ -10,7 +10,7 @@ const url = require("url");
 const adminWin = document.getElementById('admin')
 
 adminWin.addEventListener('click', function(event){
-    const modalPath = path.join('file://', __dirname, 'adminpage.html')
+    const modalPath = path.join('file://', __dirname, 'adminPage.html')
     let win = new BrowserWindow({ with: 400, height: 400})
     win.loadURL(modalPath)
     win.show()
