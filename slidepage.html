@@ -6,9 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Cache-control" content="public">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
-  <link href="./css/slidepage.css" rel="stylesheet">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script> -->
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+  <link href="./css/slidePage.css" rel="stylesheet">
   <title>Slide Show</title>
 </head>
 
@@ -19,16 +21,16 @@
       <button id='defaultClicked' class="on" onclick="openTab(event, 'Time')">Time</button>
       <button onclick="openTab(event, 'Weather')">Weather</button>
       <button onclick="openTab(event, 'Routine')">Routine</button>
-      <button onclick="openTab(event, 'Sophomore')">Sophomore</button>
-      <button onclick="openTab(event, 'Junior')">Junior</button>
-      <button onclick="openTab(event, 'Senior')">Senior</button>
+      <button onclick="openTab(event, 'Achievement')">Achievements</button>
+      <button onclick="openTab(event, 'Notice')">Notice</button>
+      <button onclick="openTab(event, 'Senior')">Info</button>
       <button onclick="location.href='./homepage.html'" type="button">homepage</button>
-      <button onclick="location.href='./adminpage.html'" type="button">admin</button>
+      <button onclick="location.href='./test.html'" type="button">admin</button>
   </div>
   <hr>
   <main id="main">
       <!-- Tab content -->
-      <div id="Time" class="tabcontent">
+      <div id="Time" class="tab-content">
           <div class="clock">
               <div class="outer-clock-face">
                   <div class="marking marking-one"></div>
@@ -57,13 +59,13 @@
               </div>
               <div class="bangla">
                   <div id="onlyday">shukrobar</div>
-                  <div id="bongabdo">???</div>
+                  <div id="bongabdo">1452</div>
               </div>
           </div>
 
       </div>
 
-      <div id="Weather" class="tabcontent">
+      <div id="Weather" class="tab-content">
 
           <!--7 days forecast-->
           <div>
@@ -79,6 +81,7 @@
                       const js = d.createElement(s);
                       js.id = id;
                       js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+                    //   js.src = "./js/TomorrowIO.js";//offline version of previous link
 
                       fjs.parentNode.insertBefore(js, fjs);
                   })(document, 'script', 'tomorrow-sdk');
@@ -92,13 +95,6 @@
                    data-widget-type="upcoming"
                    style="padding-bottom:22px;position:relative;"
               >
-                  <a
-                          href="https://www.tomorrow.io/weather/"
-                          rel="nofollow noopener noreferrer"
-                          target="_blank"
-                          style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
-                  >
-                  </a>
               </div>
           </div>
 
@@ -116,6 +112,7 @@
                       const js = d.createElement(s);
                       js.id = id;
                       js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+                    //   js.src = "./js/TomorrowIO.js";//offline version of previous link
 
                       fjs.parentNode.insertBefore(js, fjs);
                   })(document, 'script', 'tomorrow-sdk');
@@ -129,12 +126,11 @@
                    data-widget-type="aqiPollutant"
                    style="padding-bottom:22px;position:relative;"
               >
-
               </div>
           </div>
 
           <!-- weed pollen index -->
-          <!-- <div>
+          <div>
               <script>
           (function(d, s, id) {
               if (d.getElementById(id)) {
@@ -147,6 +143,7 @@
               const js = d.createElement(s);
               js.id = id;
               js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+            //   js.src = "./js/TomorrowIO.js";//offline version of previous link
 
               fjs.parentNode.insertBefore(js, fjs);
           })(document, 'script', 'tomorrow-sdk');
@@ -160,15 +157,8 @@
                   data-widget-type="aqiPollen"
                   style="padding-bottom:22px;position:relative;"
               >
-                  <a
-                  href="https://www.tomorrow.io/weather/"
-                  rel="nofollow noopener noreferrer"
-                  target="_blank"
-                  style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
-                  >
-                  </a>
               </div>
-          </div> -->
+          </div>
 
           <!-- 7 Division Weather -->
           <div>
@@ -184,6 +174,7 @@
                       const js = d.createElement(s);
                       js.id = id;
                       js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+                    //   js.src = "./js/TomorrowIO.js";//doesn't work
 
                       fjs.parentNode.insertBefore(js, fjs);
                   })(document, 'script', 'tomorrow-sdk');
@@ -197,19 +188,11 @@
                    data-widget-type="aqi6"
                    style="padding-bottom:22px;position:relative;"
               >
-                  <a
-                          href="https://www.tomorrow.io/weather/"
-                          rel="nofollow noopener noreferrer"
-                          target="_blank"
-                          style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
-                  >
-                  </a>
               </div>
           </div>
-          <p>Alternate text</p>
       </div>
 
-      <div id="Routine" class="tabcontent">
+      <div id="Routine" class="tab-content">
           <!-- easyData - Creating table -->
           <div class="container" display="block">
               <!-- Table -->
@@ -221,26 +204,53 @@
           </div>
       </div>
 
-      <div id="Sophomore" class="tabcontent">
-          <h3>Sophomore</h3>
-          <p>Tokyo is the capital of Japan.</p>
+      <div id="Achievement" class="tab-content">
+          <div class="achievementSection">
+              <img src="./img/26March.gif"  height="auto" alt="26march"><br>
+              <h1>26 March</h1>
+              <h2>It began on the night of 26 March...</h2>
+          </div>
       </div>
 
-      <div id="Junior" class="tabcontent">
-          <h3>Junior</h3>
-          <p>Tokyo is the capital of Japan.</p>
+      <div id="Notice" class="tab-content">
+          <div class="achievementSection">
+              <img src="./img/dancinSkeleton.gif" width="auto" height="235vh" alt="26march"><br>
+              <h1>Exam is coming!!!</h1>
+              <h2>My brothers in class, with a heart filled with sorrow, I must announce to you that Exam is on the horizon.
+                  Brace for C grade or possibly backlog. The possible date for 2-1 semester final is 24 August 2022. Which means not even a month is left.
+                  So my classmates, it is surely a desperate time, and desperate time calls for desperate measures.</h2>
+          </div>
+          <div class="achievementSection">
+              <img src="./img/banglarEetihash.jpg" width="auto" height="235vh" alt="26march"><br>
+              <h1>The Story of Victory!!!</h1>
+              <h2>My brothers in class, with a heart filled with sorrow, I must announce to you that Exam is on the horizon.
+                  Brace for C grade or possibly backlog. The possible date for 2-1 semester final is 24 August 2022. Which means not even a month is left.
+                  So my classmates, it is surely a desperate time, and desperate time calls for desperate measures.</h2>
+          </div>
       </div>
 
-      <div id="Senior" class="tabcontent">
-          <h3>Senior</h3>
-          <p>os the capital of Japan.</p>
+      <div id="Senior" class="tab-content">
+          <iframe allowfullscreen src="./html/AlumniPage.html" style="position:absolute; top:0; left:0; width:100%; height:100%; border: none; overflow: hidden;"></iframe>
+<!--          <embed type="text/html" src="./html/AlumniPage.html" min-width="100vw" min-height="100vh">-->
+<!--          <h3>Senior</h3>-->
+<!--          <p>os the capital of Japan.</p>-->
+<!--          <a style="display: block" href="./test.html">test</a>-->
+<!--          <p>link up</p>-->
+<!--          <a style="display: block" href="./html/AlumniPage.html">test</a>-->
+<!--          <p>link up</p>-->
+<!--          <a style="display: block" href="./test.html">test</a>-->
+<!--          <p>link up</p>-->
       </div>
   </main>
 
-  <script src="./js/slidepage.js"></script>
+  <script src="./js/slidePage.js"></script>
   <!-- Google API -->
-  <script src="https://apis.google.com/js/api.js"></script>
-  <script src="https://apis.google.com/js/api.js" onload="window.$ = window.jQuery = module.exports;"></script>
+  <!-- <script src="https://apis.google.com/js/api.js"></script><-- Google API, but why did I include it?-->
+  <!-- <script src="https://apis.google.com/js/api.js" onload="window.$ = window.jQuery = module.exports;"></script> -->
+  <!-- for compatability with electronJS. But what purpose does it serve? Can't remember.-->
+  <script src="./js/GoogleAPI.js"></script><!-- Google API, but why did I include it?-->
+  <script src="./js/GoogleAPI.js" onload="window.$ = window.jQuery = module.exports;"></script>
+
   <!-- easyData -->
   <script type="text/javascript" src="./js/easyData-google-sheets.js"></script>
 </body>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting</title>
+    <link rel="stylesheet" href="css/setting.css">
+    <script src="js/setting.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script><!-- google Oauth api script-->
+    <meta name="google-signin-client_id" content="1025035838480-j6fa7i7cfd9tfc7kond1g1thg244dfig.apps.googleusercontent.com"><!-- google Oauth api script-->
+</head>
+
+<body>
+<div class="topBar">
+    <div class="topBarLeft"><b>Setting</b></div>
+    <div class="topBarMiddle">
+        <b>Routine</b>
+    </div>
+    <div class="topBarRight">
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+<!--        <img src="./img/ruet.png" height="20vh" alt="ruet">-->
+<!--        <a href="homepage.html"><img src="./img/back.png" height="20vh" alt="freepik.com"></a>-->
+<!--        <a href="logout.php">Logout</a>-->
+    </div>
+</div>
+
+<div class="middleBar">
+    <div class="leftSide">
+        <div class="btn">
+            <button><img src="./img/color-palette.png" height="20vh" alt="freepik.com"> &nbsp;&nbsp;Appearance</button>
+            <button><img src="./img/adminIcon.png" height="20vh" alt="freepik.com"> &nbsp;&nbsp;Admin ID</button>
+            <button><img src="./img/secure.png" height="20vh" alt="freepik.com"> &nbsp;&nbsp;Password</button>
+            <button onClick="openSheet();"><img src="./img/blend-tool.png" height="20vh" alt="freepik.com"> &nbsp; &nbsp;Routine </button>
+            <button onClick="openHomepage();"><img src="./img/back.png" height="20vh" alt="freepik.com"> &nbsp;&nbsp;Return</button>
+        </div>
+        <div class="visual">
+            <img src="./img/digiBd.png" width="140vw">
+            <div class="time"><b>5:07:12<br>25 July, 2022</b></div>
+        </div>
+    </div>
+    <div class="middleSide">
+        <div class="writtenThings">
+            <iframe src="https://docs.google.com/spreadsheets/d/1p4LstWCmuhTJh8PJZTgLdO2QgWX5qF7Pi-7sOw3KqZQ/edit?usp=sharing?widget=true&amp;headers=false"></iframe>
+<!--            rm=minimal&amp;-->
+        </div>
+    </div>
+</div>
+
+<script>
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+        });
+    }
+</script><!--for Google sign out button. sign out should be automatic at return button click-->
+</body>
+</html>

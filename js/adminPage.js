@@ -11,7 +11,7 @@ function addcl(){
 }
 function remcl(){
     let parent = this.parentNode.parentNode;
-    if(this.value == ""){
+    if(this.value === ""){
         parent.classList.remove("focus");
     }
 }
@@ -28,46 +28,46 @@ window.addEventListener("offline", (event) => {
 });
 
 //most safe way to check if device has internet connection
-function connectionStatus() {
-    fetch('https://static-global-s-msn-com.akamaized.net/hp-neu/sc/2b/a5ea21.ico?d='+Date.now())
-        .then(response => {
-            // Check if the response is successful
-            if (!response.ok)
-                throw new Error('Network response was not ok');
-
-// At this point we can safely say the user has connection to the internet
-            alert("Network Online");
-            console.log("Internet available");
-        })
-        .catch(error => {
-            // The resource could not be reached
-            alert(error);
-            console.log("No Internet connection", error);
-        });
-}
+// function connectionStatus() {
+//     fetch('https://static-global-s-msn-com.akamaized.net/hp-neu/sc/2b/a5ea21.ico?d='+Date.now())
+//         .then(response => {
+//             // Check if the response is successful
+//             if (!response.ok)
+//                 throw new Error('Network response was not ok');
+//
+// // At this point we can safely say the user has connection to the internet
+//             alert("Network Online");
+//             console.log("Internet available");
+//         })
+//         .catch(error => {
+//             // The resource could not be reached
+//             alert(error);
+//             console.log("No Internet connection", error);
+//         });
+// }
 
 //get password from ss
 let user; let pass;console.log(`${user} -> ${pass}`);
 //most safe way to check if device has internet connection
-function connectionStatus() {
-    fetch('https://static-global-s-msn-com.akamaized.net/hp-neu/sc/2b/a5ea21.ico?d='+Date.now())
-        .then(response => {
-            // Check if the response is successful
-            if (!response.ok)
-                throw new Error('Network response was not ok');
-
-// At this point we can safely say the user has connection to the internet
-            console.log("Internet available");
-            let hr = document.getElementsByTagName("hr");
-            hr[0].style.backgroundColor='white';
-        })
-        .catch(error => {
-            // The resource could not be reached
-            console.log("No Internet connection", error);
-            let hr = document.getElementsByTagName("hr");
-            hr[0].style.backgroundColor='red';
-        });
-}
+// function connectionStatus() {
+//     fetch('https://static-global-s-msn-com.akamaized.net/hp-neu/sc/2b/a5ea21.ico?d='+Date.now())
+//         .then(response => {
+//             // Check if the response is successful
+//             if (!response.ok)
+//                 throw new Error('Network response was not ok');
+//
+// // At this point we can safely say the user has connection to the internet
+//             console.log("Internet available");
+//             let hr = document.getElementsByTagName("hr");
+//             hr[0].style.backgroundColor='white';
+//         })
+//         .catch(error => {
+//             // The resource could not be reached
+//             console.log("No Internet connection", error);
+//             let hr = document.getElementsByTagName("hr");
+//             hr[0].style.backgroundColor='red';
+//         });
+// }
 
 let tableHead ;
 let tableBody ;
@@ -118,8 +118,8 @@ function getPassword() {
     }
 
     function isSignedIn() {
-        if (getCookie('guser-loggedin') === 'true') return true;
-        return false;
+        return getCookie('guser-loggedin') === 'true';
+
     }
 
     function setCookie(cname = 'guser-loggedin', cvalue, exdays) {
@@ -134,10 +134,10 @@ function getPassword() {
         let ca = document.cookie.split(';');
         for (let i = 0; i < ca.length; i++) {
             let c = ca[i];
-            while (c.charAt(0) == ' ') {
+            while (c.charAt(0) === ' ') {
                 c = c.substring(1);
             }
-            if (c.indexOf(name) == 0) {
+            if (c.indexOf(name) === 0) {
                 return c.substring(name.length, c.length);
             }
         }
@@ -193,12 +193,18 @@ function check(form)/*function to check userid & password*/
     if(form.username.value === user && form.password.value === pass)
     {
         /*opens the target page while ID & password matches*/
-        window.open('https://docs.google.com/spreadsheets/d/1p4LstWCmuhTJh8PJZTgLdO2QgWX5qF7Pi-7sOw3KqZQ/edit#gid=0')
+        // window.open('https://docs.google.com/spreadsheets/d/1p4LstWCmuhTJh8PJZTgLdO2QgWX5qF7Pi-7sOw3KqZQ/edit#gid=0')
+        window.location.replace("./setting.html");
     }
     else
     {
-        console.log("Error Password or Username");/*displays error message*/
         attempt--;
-        if (attempt <= 0){window.open('./slidepage.html')}
+        console.log("Error Password or Username");
+	    document.getElementsByClassName("errorMessage")[0].innerHTML=`Wrong Username or Password.</br>You have ${attempt} attempt left.`;
+        if (attempt <= 0){
+            window.location.replace("./slidepage.html");
+            // window.open('./slidepage.html', "_self"); both does the same thing
+        }
+        return false;
     }console.log(attempt);
 }
