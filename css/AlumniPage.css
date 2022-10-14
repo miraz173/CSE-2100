@@ -1,6 +1,6 @@
 body{
     /*background-color: #3c3c7f;*/
-    height: 98vh;
+    height: 97vh;
     width: 98vw;
     background-image: linear-gradient(to bottom right, #3c3c7f, #7F5A83);
     text-align: center;
@@ -9,7 +9,8 @@ body{
     color: #aaffe8;
 }
 .header{
-    padding: 2vh 0 1.5vh 0;
+    padding: 1vh 0 1.5vh 0;
+    /* padding: 0vh; */
 }
 h1{
     text-transform: uppercase;

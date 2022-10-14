@@ -6,8 +6,7 @@ function connectionStatus() {
         if (!response.ok)
           throw new Error('Network response was not ok');
 
-// At this point we can safely say the user has connection to the internet
-        console.log("Internet available");
+        console.log("Internet available");// At this point we can safely say the user has connection to the internet
         let hr = document.getElementsByTagName("hr");
         hr[0].style.backgroundColor='white';
       })
@@ -19,157 +18,78 @@ function connectionStatus() {
       });
 }
 
-function showRoutine() {
-  // Google Sheets
 
-  // const GS_SCOPE = "https://www.googleapis.com/auth/spreadsheets.readonly";
-  const GS_SCOPE = "./js/googleSheetAPI.json";
-  const GS_API_URL = "https://sheets.googleapis.com/$discovery/rest?version=v4";
-  // const GS_API_URL = "./js/rest.json";//offline version of previous link; doesn't work
+import * as util from "./utility.js";
+let tr=[];
+  // Your API KEY
+  const API_KEY = "AIzaSyC1cRemc4QTWBxrODtbqzChoPkzvsAlS-4";
 
-  function initOAuthClient(credentials = null) {
-
-    if (credentials && credentials.clientId !== null && typeof credentials.clientId === 'string') {
-      gapi.load("client:auth2", function () {
-        gapi.auth2.init({ client_id: credentials.clientId }).then(() => document.dispatchEvent(new Event('gapi-loaded')));
-      });
-    } else if (credentials && credentials.apiKey !== null && typeof credentials.apiKey === 'string') {
-      gapi.load("client", () => {
-        gapi.client.setApiKey(credentials.apiKey);
-        document.dispatchEvent(new Event('gapi-loaded'))
-      });
-    } else console.error('clientId or apiKey not defined');
-  }
-
-  function signIn(scope = GS_SCOPE) {
-    return gapi.auth2.getAuthInstance().signIn({ scope }).then(() => {
-      setCookie('guser-loggedin', 'true', 1);
-      location.reload();
-    }, (e) => console.error(e));console.log('uo')
-  }
-
-  function signOut() {
-    return gapi.auth2.getAuthInstance().signOut().then(() => {
-      setCookie('guser-loggedin', 'true', -1);
-      location.reload();
-    }, (e) => console.error(e));
-  }
-
-  function loadClient(apiPath = GS_API_URL) {
-    return gapi.client.load(apiPath);
-  }
-
-  function getValues(query, cb = function (res) { console.log(res); }, err = function (err) { console.error(err); }) {
-    return loadClient().then(() => gapi.client.sheets.spreadsheets.values.get(query).then(cb, err));
-  }
-
-  function getPublicValues(query, cb = function (res) { console.log(res); }, err = function (err) { console.error(err); }) {
-    return loadClient().then(() => gapi.client.sheets.spreadsheets.values.get(query).then(cb, err));
-  }
-
-  function isSignedIn() {
-    if (getCookie('guser-loggedin') === 'true') return true;
-    return false;
-  }
-
-  function setCookie(cname = 'guser-loggedin', cvalue, exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
-
-  function getCookie(cname) {
-    let name = cname + "=";
-    let ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-
-  let tr=[];
-  // easyData - Creating table
-  {
-    {console.log("table loading...");
-      // Your API KEY
-      const API_KEY = "AIzaSyC1cRemc4QTWBxrODtbqzChoPkzvsAlS-4";
-      console.log("api connected");
-
-      function displayResult2(response) {
-        let tableHead = "";
-        let tableBody = "";
-        response.result.values.forEach((row, index) => {
-          let td=[];
-          if (index === 0) {
-            tableHead += "<tr>";
-            row.forEach((val) => (tableHead += "<th>" + val + "</th>"));
-            tableHead += "</tr>";
-          } else {
-            if (index === 4 || index === 8 || index === 12){
-              tableBody += "<tr height='3%'></tr>"; tr.push(td);
-            }
-            else{
-              tableBody += "<tr>";
-              row.forEach((val, ind) => {
-                if (row[ind] !== row[ind-1]){
-                  if (row[ind]===row[ind+1] && row[ind]===row[ind+2]){
-                    tableBody += "<td colspan='3'>" + val + "</td>"; td.push(3);
-                  }
-                  else if (row[ind]===row[ind+1] && row[ind]!==row[ind+2]){
-                    tableBody += "<td colspan='2'>" + val + "</td>"; td.push(2);
-                  }
-                  else{
-                    tableBody += "<td>" + val + "</td>"; td.push(1);
-                  }
-                }
-              });
-              tableBody += "</tr>"; tr.push(td);
-              console.log(td);
-            }
-
-          }
-        });
-
-        document.getElementById("table-head").innerHTML = tableHead;
-        document.getElementById("table-body").innerHTML = tableBody; console.log("table loaded");
-      }
-
-      function loadData() {
-        //my edit
-        let date = new Date();
-        let day = date.getDay(); //day=6;
-        let range;
-        switch (day) {
-          case 0: range = "Sunday!A:Z"; break;
-          case 1: range = "Monday!A:Z"; break;
-          case 2: range = "Tuesday!A:Z"; break;
-          case 3: range = "Wednesday!A:Z"; break;
-          case 4:
-          case 5: range = "OffDay!A:Z"; break;
-          case 6: range = "Saturday!A:Z"; break;
+  function displayResult2(response) {
+    let tableHead = "";
+    let tableBody = "";
+    response.result.values.forEach((row, index) => {
+      let td=[];
+      if (index === 0) {
+        tableHead += "<tr>";
+        row.forEach((val) => (tableHead += "<th>" + val + "</th>"));
+        tableHead += "</tr>";
+      } else {
+        if (index === 4 || index === 8 || index === 12){
+          tableBody += "<tr height='3%'></tr>"; tr.push(td);
         }
-        // Spreadsheet ID
-        const spreadsheetId = "1p4LstWCmuhTJh8PJZTgLdO2QgWX5qF7Pi-7sOw3KqZQ";
-        //const range = "A:Z";
-        getPublicValues({ spreadsheetId, range }, displayResult2);
+        else{
+          tableBody += "<tr>";
+          row.forEach((val, ind) => {
+            if (row[ind] !== row[ind-1]){
+              if (row[ind]===row[ind+1] && row[ind]===row[ind+2]){
+                tableBody += "<td colspan='3'>" + val + "</td>"; td.push(3);
+              }
+              else if (row[ind]===row[ind+1] && row[ind]!==row[ind+2]){
+                tableBody += "<td colspan='2'>" + val + "</td>"; td.push(2);
+              }
+              else{
+                tableBody += "<td>" + val + "</td>"; td.push(1);
+              }
+            }
+          });
+          tableBody += "</tr>"; tr.push(td);
+          console.log(td);
+        }
+
       }
+    });
 
-      window.addEventListener("load", (e) => {
-        initOAuthClient({ apiKey: API_KEY });
-      });
-
-      document.addEventListener("gapi-loaded", (e) => {
-        loadData();
-      });
-    }
+    document.getElementById("table-head").innerHTML = tableHead;
+    document.getElementById("table-body").innerHTML = tableBody; console.log("table loaded");
   }
+
+  function loadData() {
+    //my edit
+    let date = new Date();
+    let day = date.getDay(); //day=6;
+    let range;
+    switch (day) {
+      case 0: range = "Sunday!A:Z"; break;
+      case 1: range = "Monday!A:Z"; break;
+      case 2: range = "Tuesday!A:Z"; break;
+      case 3: range = "Wednesday!A:Z"; break;
+      case 4:
+      case 5: range = "OffDay!A:Z"; break;
+      case 6: range = "Saturday!A:Z"; break;
+    }
+    // Spreadsheet ID
+    const spreadsheetId = "1p4LstWCmuhTJh8PJZTgLdO2QgWX5qF7Pi-7sOw3KqZQ";
+    //const range = "A:Z";
+    util.getPublicValues({ spreadsheetId, range }, displayResult2);
+  }
+
+  window.addEventListener("load", (e) => {
+    util.initOAuthClient({ apiKey: API_KEY });
+  });
+
+  document.addEventListener("gapi-loaded", (e) => {
+    loadData();
+  });
 
 
 //highlight colum based on current time
@@ -188,7 +108,7 @@ function showRoutine() {
         if (minute > 1020 || minute < 480){
           period = 0;//null
         }
-        else if (minute >=970 && minute<=1020){
+        else if (minute >=970){
           period = 11;
         }
         else if(minute >= 920){
@@ -244,7 +164,4 @@ function showRoutine() {
 
 
   setInterval(connectionStatus, 2000);//update connection status every 2 sec
-  setInterval(highlightCol, 1000);//1 second
-}
-
-showRoutine();
+  setInterval(highlightCol, 2000);//2 second

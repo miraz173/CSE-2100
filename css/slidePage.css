@@ -325,6 +325,9 @@ table{
   /*background: #bdbdcb;*/
   align-content: center;
   text-align: center;
+  font-size: larger;
+  font-weight: 700;
+  font-style: bold;
 }
 
 /* On smaller resolutions */

@@ -2,7 +2,7 @@ function openTab(evt, cityName) {
   // Declare all variables
   let i, tabcontent, tablinks;
 
-  // Get all elements with class="tabcontent" and hide them; i.e hide all tabs
+  // Get all elements with class="tab-content" and hide them; i.e. hide all tabs
   tabcontent = document.getElementsByClassName("tab-content");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
@@ -35,14 +35,23 @@ $(function() {
   tabs.click(function() { $(this).addClass('on').siblings('.on').removeClass('on');});
     
   //auto-rotate every 5 seconds
+	let scrollTime=8000;
   setInterval(function() {
           //get currently-on tab
       let onTab = tabs.filter('.on');
-
           //click either next tab, if exists, else first one
       let nextTab = onTab.index() < tabs.length-3 ? onTab.next() : tabs.first();
+	  if (onTab.index()==2){
+		  scrollTime=12000;
+		  console.log(onTab.index());
+		  console.log(TimeRanges);
+	  }
+	  else {
+		  scrollTime= 5000;
+		  console.log(onTab.index()+"-5000ms");
+	  }
       nextTab.click();
-  }, 5000);
+  }, scrollTime);
 });
 
 //time tab js
