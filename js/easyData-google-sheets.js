@@ -1,3 +1,8 @@
+import * as util from "./utility.js";
+const spreadsheetId = "1p4LstWCmuhTJh8PJZTgLdO2QgWX5qF7Pi-7sOw3KqZQ";
+const API_KEY = "AIzaSyC1cRemc4QTWBxrODtbqzChoPkzvsAlS-4";
+let tr=[];
+
 //most safe way to check if device has internet connection
 function connectionStatus() {
   fetch('https://static-global-s-msn-com.akamaized.net/hp-neu/sc/2b/a5ea21.ico?d='+Date.now())
@@ -17,12 +22,6 @@ function connectionStatus() {
         hr[0].style.backgroundColor='red';
       });
 }
-
-
-import * as util from "./utility.js";
-let tr=[];
-  // Your API KEY
-  const API_KEY = "AIzaSyC1cRemc4QTWBxrODtbqzChoPkzvsAlS-4";
 
   function displayResult2(response) {
     let tableHead = "";
@@ -63,8 +62,7 @@ let tr=[];
     document.getElementById("table-body").innerHTML = tableBody; console.log("table loaded");
   }
 
-  function loadData() {
-    //my edit
+  function loadData(spreadsheetId) {
     let date = new Date();
     let day = date.getDay(); //day=6;
     let range;
@@ -77,8 +75,6 @@ let tr=[];
       case 5: range = "OffDay!A:Z"; break;
       case 6: range = "Saturday!A:Z"; break;
     }
-    // Spreadsheet ID
-    const spreadsheetId = "1p4LstWCmuhTJh8PJZTgLdO2QgWX5qF7Pi-7sOw3KqZQ";
     //const range = "A:Z";
     util.getPublicValues({ spreadsheetId, range }, displayResult2);
   }
@@ -88,7 +84,7 @@ let tr=[];
   });
 
   document.addEventListener("gapi-loaded", (e) => {
-    loadData();
+    loadData(spreadsheetId);
   });
 
 

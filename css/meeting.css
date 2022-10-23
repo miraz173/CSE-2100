@@ -1,0 +1,162 @@
+* {
+    box-sizing: border-box;
+    font-size: 1.8vh;
+    /* opacity: 0.4; */
+  }
+  
+  body {
+    background-color: #201F55;
+    background-image: linear-gradient(to bottom right, #201f5582, #201f5554),url("../img/ruet.png");
+    background-size: 20vh 20vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+  }
+  
+  
+  .calendar {
+    /* width: 370px; */
+    /* box-shadow: 0px 0px 35px -16px rgba(0, 0, 0, 0.75); */
+    font-family: "Roboto", sans-serif;
+    padding: 20px 30px;
+    /* color: #363b41; */
+    /* display: inline-block; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: "----";
+    width: 95vw;
+    height: 98vh;
+    margin: auto;
+  }
+  
+  .calendar_header {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .header_copy {
+    color: #a39d9e;
+    font-size: 20px;
+  }
+  
+  .calendar_plan {
+    margin: 20px 0 40px;
+  }
+  
+  .cl_plan {
+    /* width: 100%; #ff8494*/
+    height: 13.5vh;
+    background-image: linear-gradient(90deg, #84ffda96, #201F55);
+    box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
+    padding: 15px;
+    color: #fff;
+    margin-bottom: -2.2vh;
+  }
+  
+  .cl_copy {
+    /* font-size: 20px; */
+    margin: 17px 0;
+    display: inline-block;
+  }
+  
+  .cl_add {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    margin: 0 0 0 65px;
+    color: #c2c2c2;
+    padding: 11px 13px;
+  }
+  
+  .calendar_events {
+    color: #a39d9e;
+    margin-top: -1vh;
+  }
+  
+  .ce_title {
+    font-style: italic;
+    font-size: 1.9vh;
+    /* font-size: 14px; */
+    padding-left: 10px;
+    text-shadow:1px 1px #baa9ff;
+    margin-bottom: -0.2vh;
+    /* color: rgb(208, 149, 149); */
+    /* box-shadow: 0px 0px 52px -18px rgb(0, 0, 0); */
+  }
+  
+  .event_item {
+    margin: 18px 0;
+    padding: 5px;
+    padding-left: 10px;
+    cursor: pointer;
+  }
+  .event_item:hover {
+    background-image: linear-gradient(-222deg, #ff8494b1, #ffa9b76d);
+    box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
+  }
+  .event_item:hover .ei_Dot {
+    background-color: #fff;
+  }
+  .event_item:hover .ei_Copy,
+  .event_item:hover #ei_Title {
+    color: #fff;
+  }
+  
+  .ei_Dot,
+  #ei_Title {
+    display: inline-block;
+    text-shadow:1px 1px #baa9ff;
+  }
+  
+  .ei_Dot {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: #26f668;
+    box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
+  }
+  
+  .dot_active {
+    background-color: #ff8494;
+  }
+  
+  #ei_Title {
+    margin-left: 10px;
+    color: #363b41;
+  }
+  
+  .ei_Copy {
+    font-size: 1.8vh;
+    /* font-size: 12px; */
+    margin-left: 27px;
+  }
+  
+  .dark {
+    background-image: url("../img/astro-removebg-preview.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+    /* linear-gradient(-222deg, #646464, #454545); */
+    color: #fff;
+    /* animation: mymove 10s infinite; */
+  }
+  
+  /* @keyframes mymove {
+    50% {background-position: right bottom;}
+  } */
+  
+  .dark .header_title,
+  .dark #ei_Title,
+  .dark .ce_title 
+  {
+    color: #fff;
+  }
+
+  h4{
+    padding-left: 10px;
+    text-shadow:1px 1px #baa9ff;
+  }
+  p{
+    font-size: 1.75vh;
+  }

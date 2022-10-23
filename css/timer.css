@@ -8,7 +8,8 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #EEE;
+    /* background: #EEE; */
+    background: inherit;
     margin: auto;
   }
   .flip-clock {
@@ -27,6 +28,7 @@ html {
   }
   .flip-clock__slot {
     font-size: 4vw;
+    margin-right: 15px;
   }
   .card {
     display: block;
@@ -47,7 +49,7 @@ html {
     background: #222;
     padding: 0.25em 0.25em;
     border-radius: 0.15em 0.15em 0 0;
-    backface-visiblity: hidden;
+    /* backface-visiblity: hidden; */
     transform-style: preserve-3d;
     width: 1.8em;
     transform: translateZ(0);
