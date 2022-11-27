@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="72001"><!-- refresh after 20 hours-->
+    <script src="../js/jquery.min.js"></script>
+    <!-- <script src="./js/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script> -->
+    <link href="../css/slidePage.css" rel="stylesheet">
+    <title>Slide Show</title>
+
+</head>
+<body>
+    <div>
+        <script>
+            (function (d, s, id) {
+                if (d.getElementById(id)) {
+                    if (window.__TOMORROW__) {
+                        window.__TOMORROW__.renderWidget();
+                    }
+                    return;
+                }
+                const fjs = d.getElementsByTagName(s)[0];
+                const js = d.createElement(s);
+                js.id = id;
+                js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+                //   js.src = "./js/TomorrowIO.js";//offline version of previous link
+
+                fjs.parentNode.insertBefore(js, fjs);
+            })(document, "script", "tomorrow-sdk");
+        </script>
+
+        <div class="tomorrow"
+             data-location-id="008574"
+             data-language="EN"
+             data-unit-system="METRIC"
+             data-skin="light"
+             data-widget-type="upcoming"
+        >
+        </div>
+    </div>
+
+    <!-- air particle index -->
+    <div>
+        <script>
+            (function (d, s, id) {
+                if (d.getElementById(id)) {
+                    if (window.__TOMORROW__) {
+                        window.__TOMORROW__.renderWidget();
+                    }
+                    return;
+                }
+                const fjs = d.getElementsByTagName(s)[0];
+                const js = d.createElement(s);
+                js.id = id;
+                js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+                //   js.src = "./js/TomorrowIO.js";//offline version of previous link
+
+                fjs.parentNode.insertBefore(js, fjs);
+            })(document, "script", "tomorrow-sdk");
+        </script>
+
+        <div class="tomorrow"
+             data-location-id="008574"
+             data-language="EN"
+             data-unit-system="METRIC"
+             data-skin="light"
+             data-widget-type="aqiPollutant"
+        >
+        </div>
+    </div>
+
+    <!-- weed pollen index -->
+    <div>
+        <script>
+            (function (d, s, id) {
+                if (d.getElementById(id)) {
+                    if (window.__TOMORROW__) {
+                        window.__TOMORROW__.renderWidget();
+                    }
+                    return;
+                }
+                const fjs = d.getElementsByTagName(s)[0];
+                const js = d.createElement(s);
+                js.id = id;
+                js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+                //   js.src = "./js/TomorrowIO.js";//offline version of previous link
+
+                fjs.parentNode.insertBefore(js, fjs);
+            })(document, "script", "tomorrow-sdk");
+        </script>
+
+        <div class="tomorrow"
+             data-location-id="008574"
+             data-language="EN"
+             data-unit-system="METRIC"
+             data-skin="light"
+             data-widget-type="aqiPollen"
+        >
+        </div>
+    </div>
+
+    <!-- 7 Division Weather -->
+    <div>
+        <script>
+            (function (d, s, id) {
+                if (d.getElementById(id)) {
+                    if (window.__TOMORROW__) {
+                        window.__TOMORROW__.renderWidget();
+                    }
+                    return;
+                }
+                const fjs = d.getElementsByTagName(s)[0];
+                const js = d.createElement(s);
+                js.id = id;
+                js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+                //   js.src = "./js/TomorrowIO.js";//doesn't work
+
+                fjs.parentNode.insertBefore(js, fjs);
+            })(document, "script", "tomorrow-sdk");
+        </script>
+
+        <div class="tomorrow"
+             data-location-id="008574,008486,008596,008460,008481,008514"
+             data-language="EN"
+             data-unit-system="METRIC"
+             data-skin="light"
+             data-widget-type="aqi6"
+        >
+        </div>
+    </div>
+
+    <script src="../js/weather.js" type="module"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/GoogleAPI.js"></script>
+</body>

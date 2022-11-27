@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="7200"><!-- refresh after 20 hours-->
+    <script src="../js/jquery.min.js"></script>
+    <!-- <script src="./js/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script> -->
+    <link href="../css/slidePage.css" rel="stylesheet">
+    <title>Slide Show</title>
+
+</head>
+
+<body onload="openFullscreen()">
+<!-- Tab links -->
+<div class="tab">
+    <!-- <button onclick="openTab(event, 'RuetInfo')" type="button">RUET</button>
+    <button onclick="openTab(event, 'Events')" type="button">Events</button> -->
+    <button onclick="openTab(event, 'Time')" class="on" type="button">Time</button>
+    <button onclick="openTab(event, 'Routine')" type="button">Routine</button>
+    <button onclick="openTab(event, 'meetings')" type="button">Meeting</button>
+    <button onclick="openTab(event, 'Notice')" type="button">Notice</button>
+    <button onclick="openTab(event, 'Weather')" type="button">Weather</button>
+    <button onclick="openTab(event, 'Time')" type="button">Time</button>
+    <button onclick="openTab(event, 'Events')" type="button">Events</button>
+    <button onclick="openTab(event, 'meetings')" type="button">Meeting</button>
+    <button onclick="openTab(event, 'Series')" type="button">Series</button>
+    <button onclick="window.location.replace('./setting.html')" type="button">Setting</button>
+    <button onclick="openFullscreen()" id="fullscreen" type="button">Fullscreen</button>
+</div>
+<hr>
+<main id="main">
+    <!-- Tab content -->
+    <div id="Series" class="tab-content" display="block">
+        <iframe allowfullscreen src="./seriesInfo.html" title="Alumni" class="iframeSmall" id="iRuetInfo"></iframe> <!--iframe ids(ex:iRuetInfo, iNotice) no longer needed-->
+    </div>
+
+    <div id="Time" class="tab-content">
+        <iframe allowfullscreen src="./clock.html" title="Clock" class="iframeClock" id="iTime"></iframe>
+    </div>
+
+    <div id="Weather" class="tab-content">
+        <iframe allowfullscreen src="./weather.html" title="Weather" class="iframeSmall"></iframe>
+    </div>
+
+    <div id="Routine" class="tab-content">
+        <iframe allowfullscreen src="./routine.html" title="Routine" class="iframeRoutine" id="iRoutine"></iframe>
+    </div>
+
+    <div id="Events" class="tab-content">
+        <iframe allowfullscreen src="./events.html" title="Events" class="iframeSmall" id="iEvents"></iframe>
+    </div>
+
+    <div id="Notice" class="tab-content">
+        <iframe allowfullscreen src="./noticeBoard.html" title="Notice" class="iframeSmall" id="iNotice"></iframe>
+    </div>
+
+    <div id="teacherInfo" class="tab-content">
+        <iframe allowfullscreen src="./teacherInfo.html" title="TeachersInfo" class="iframeSmall" id="iteacherInfo"></iframe>
+    </div>
+
+    <div id="meetings" class="tab-content">
+        <iframe allowfullscreen src="./Meeting.html" title="Meetings" class="iframeSmall" id="imeetings"></iframe>
+    </div>
+</main>
+
+<!-- Google API -->
+<script src="../js/GoogleAPI.js"></script><!-- Google API, but why did I include it?-->
+<!-- <script src="../js/slidePage.js"></script> -->
+<!-- <script src="./js/GoogleAPI.js" onload="window.$ = window.jQuery = module.exports;"></script> -->
+<script>
+function connectionStatus() {//slidepage.js for ddocumentation
+    fetch('https://static-global-s-msn-com.akamaized.net/hp-neu/sc/2b/a5ea21.ico?d=' + Date.now())
+        .then(response => {
+            if (!response.ok){
+                throw new Error('Network response was not ok');
+            }
+            else {
+                document.getElementsByTagName("hr")[0].style.borderColor = 'white';
+            }
+        })
+        .catch(error => {
+            document.getElementsByTagName("hr")[0].style.borderColor = 'red';
+        });
+}
+setInterval(connectionStatus, 5000);
+function openTab(evt, cityName) {
+    let i, tabContent, tabLinks;
+    tabContent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+$(function () {
+    let tabs = $('.tab button');
+    tabs.click(function () {
+        $(this).addClass('active on').siblings('.on').removeClass('active on');
+    });
+    setInterval(function () {
+        let onTab = tabs.filter('.on');
+        let nextTab = onTab.index() < tabs.length - 3 ? onTab.next() : tabs.first();
+        nextTab.click();
+    }, 10000);//auto-rotate every 10 seconds
+});
+let elem = document.documentElement;
+let fullscreen = 0;
+function openFullscreen() {
+    if (fullscreen === 0) {
+        fullscreen = 1;
+        document.getElementById('fullscreen').innerText = 'Exit';
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+        }
+    }
+    else {
+        fullscreen = 0;
+        document.getElementById('fullscreen').innerText = 'Fullscreen';
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+        }
+    }
+}
+</script>
+</body>
+
+</html>

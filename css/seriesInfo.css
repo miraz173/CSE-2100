@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    font-size: 2vh;
+    text-align: center;
+  }
+  
+  body {
+    background-color: #201F55;
+    background-image: linear-gradient(to bottom right, #201f5582, #201f5554),url("../img/ruet.png");
+    background-size: 20vh 23vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+  }
+  
+  .calendar {
+    /* width: 370px; */
+    /* box-shadow: 0px 0px 35px -16px rgba(0, 0, 0, 0.75); */
+    font-family: "Roboto", sans-serif;
+    padding: 20px 30px;
+    /* color: #363b41; */
+    /* display: inline-block; */
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: "----"; */
+    width: 95vw;
+    height: 98vh;
+    margin: auto;
+  }
+  
+  .dark {
+    background-image: url("../img/astro-removebg-preview.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  h4{
+    padding-left: 10px;
+    text-shadow:1px 1px #baa9ff;
+  }
+  p{
+    font-size: 1.75vh;
+  }
+  table{
+    width: 90vw;
+    margin: auto;
+    border-collapse: collapse;
+    /* border-spacing: 0 1em; */
+    /* border: 5px; */
+  }
+  th, td {
+    height: 7vh;
+    margin: auto;
+    /* padding: 1.5vh; */
+    border: 5px solid #201F55;
+    border-radius: 2vh;
+    background-color: #84dcff77;
+  }
+
+  .series{
+    width: 8vw;
+  }
+  .section{
+    width: 8vw;
+  }
+  .cr{
+    width: 25vw;
+  }
+  .CA {
+    width: 15vw;
+  }
+  .notes{
+    width: 22vw;
+  }

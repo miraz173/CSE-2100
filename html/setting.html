@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting</title>
+    <link rel="stylesheet" href="../css/setting.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/setting.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script><!-- google Oauth api script-->
+    <meta name="google-signin-client_id" content="1025035838480-j6fa7i7cfd9tfc7kond1g1thg244dfig.apps.googleusercontent.com"><!-- google Oauth api script-->
+</head>
+
+<body onload="openFullscreen()">
+<div class="topBar">
+    <div class="topBarLeft"><b>Setting</b></div>
+    <div class="topBarMiddle">
+        <b>Routine</b>
+    </div>
+    <div class="topBarRight">
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+<!--        <img src="./img/ruet.png" height="20vh" alt="ruet">https://miraz173.github.io/html/setting.html-->
+<!--        <a href="homepage.html"><img src="./img/back.png" height="20vh" alt="freepik.com"></a>-->
+<!--        <a href="logout.php">Logout</a>-->
+    </div>
+</div>
+
+<div class="middleBar">
+    <div class="leftSide">
+        <div class="btn">
+            <button onclick="openFullscreen()" id="fullscreen" type="button"><img src="../img/flscreen.jpg" height="20vh" alt="freepik.com"> &nbsp; &nbsp;Fullscreen</button>
+            <button type="button" onclick="location.href='https://script.google.com/macros/s/AKfycbyWMAiYv0o9Y4bNN55xzgbJWAdgD8cjx3gYF7Q-1Eo9dXBMsVSnCmLshwLQPW-OeptBEA/exec'"><img src="../img/event.png" height="20vh" alt="freepik.com"> &nbsp;&nbsp;Events</button>
+            <button type="button" onclick="location.href='https://script.google.com/macros/s/AKfycbwh_CMbQ0gBXinyYt8pLDUBqrPa-iw7DilJLCoCBKRenBR-gUqv0mJRfX8oh-UK4xbp1Q/exec'"><img src="../img/noticeY.png" height="20vh" alt="freepik.com"> &nbsp;&nbsp;Notice</button>
+            <button type="button" onClick="openSheet();"><img src="../img/blend-tool.png" height="20vh" alt="freepik.com"> &nbsp; &nbsp;Routine </button>
+            <button type="button"><img src="../img/adminIcon.png" height="20vh" alt="freepik.com"> &nbsp;&nbsp;Gallary</button>
+            <button type="button"><img src="../img/secure.png" height="20vh" alt="freepik.com"> &nbsp;&nbsp;Password</button>
+            <button type="button" onClick="openHomepage();"><img src="../img/back.png" height="20vh" alt="freepik.com"> &nbsp;&nbsp;Return</button>
+        </div>
+        <div class="visual">
+            <img src="../img/digiBd.png" alt="digitalBangladesh" width="140vw">
+            <div class="time"><b>5:07:12<br>25 July, 2022</b></div>
+        </div>
+    </div>
+    <div class="middleSide">
+        <div class="writtenThings">
+            <iframe title="wr" src="https://docs.google.com/spreadsheets/d/1p4LstWCmuhTJh8PJZTgLdO2QgWX5qF7Pi-7sOw3KqZQ/edit?usp=sharing?widget=true&amp;headers=false"></iframe>
+<!--            rm=minimal&amp;-->
+        </div>
+    </div>
+</div>
+
+<!--for Google sign out button. sign out should be automatic at return button click-->
+<script>
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+        });
+    }
+</script>
+</body>
+</html>
